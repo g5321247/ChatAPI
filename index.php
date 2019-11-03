@@ -1,11 +1,32 @@
 <?php
 
-require 'task.php';
+require 'user.php';
+require 'api/read.php';
+
 
 $queryBuilder = require 'bootstrap.php';
-$tasks =  $queryBuilder -> selectAll('todos');
+$users =  $queryBuilder -> selectAll('User');
 
-var_dump($tasks);
+if (count($users)>0) {
+  $userArray = array();
+  $userArray["users"] = array();
+
+  foreach ($users as $key => $userModel) {
+    $user = array(
+      "id" => $userModel->uuid,
+      "name" => $userModel->name,
+      "photo" => $userModel->photo,
+    );
+
+    array_push($userArray["users"], $user);
+  }
+
+  http_response_code(200);
+  echo json_encode($userArray);
+}
+
+
+// var_dump($users);
 
 ?>
 
