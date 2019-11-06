@@ -1,11 +1,11 @@
 <?php
-require '../user.php';
+require '../object/user.php';
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
 $queryBuilder = require '../bootstrap.php';
-$users =  $queryBuilder -> selectAll("user", 'User');
+$users =  $queryBuilder -> selectAll('use', 'User');
 
 // $user = isset($_POST['user'])?$_POST['user']:'';
 // !empty($user)
