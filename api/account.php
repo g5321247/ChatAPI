@@ -12,7 +12,13 @@ $users =  $queryBuilder -> queryAccount('user', $account);
 if (empty($account) || empty($password)) {
   http_response_code(404);
   $result = ["error"=>"Invalid request body."];
+  echo json_encode($result);
+}
 
+if (empty($users)) {
+  $result = [
+    "message" => "帳號不正確",
+  ];
   echo json_encode($result);
 } else if ($users[0]->password == $password) {
   echo json_encode($users[0]);
