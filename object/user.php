@@ -6,8 +6,8 @@ class User {
    public $account;
    public $password;
    public $name;
-   public $photo ;
-
+   public $photo;
+   public $status;
 }
 
 
