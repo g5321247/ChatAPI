@@ -21,7 +21,15 @@ if (empty($users)) {
   ];
   echo json_encode($result);
 } else if ($users[0]->password == $password) {
-  echo json_encode($users[0]);
+  $user = $users[0];
+  $result = [
+    "id"=> $user->id,
+    "name"=> $user->name,
+    "picture"=> $user->photo,
+    "status_text"=> $user->status,
+  ];
+
+  echo json_encode($result);
 } else {
   $result = [
     "message" => "密碼不正確",
