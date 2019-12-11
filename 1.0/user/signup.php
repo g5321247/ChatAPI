@@ -1,10 +1,9 @@
 <?php
-include(dirname(__FILE__)."/../object/user.php");
-
+include(dirname(dirname(dirname(__FILE__)))."/object/user.php");
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-$queryBuilder = require '../bootstrap.php';
+$queryBuilder = require (dirname(dirname(dirname(__FILE__)))."/bootstrap.php");
 $account = isset($_POST['account']) ? $_POST['account']:'';
 $password = isset($_POST['password']) ? md5($_POST['password']):'';
 $users =  $queryBuilder -> queryAccount('user', $account);
