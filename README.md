@@ -7,7 +7,7 @@ george.darklit.tw
 
 1.0
 
-## User Sign
+## User Signup
 - **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Example:**
