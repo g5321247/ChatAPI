@@ -10,12 +10,10 @@ $password = isset($_POST['password']) ? md5($_POST['password']):'';
 $users =  $queryBuilder -> queryAccount('user', $account);
 
 if (empty($account) || empty($password)) {
-  http_response_code(404);
+  // http_response_code(404);
   $result = ["error"=>"Invalid request body."];
   echo json_encode($result);
-}
-
-if (empty($users)) {
+}else if (empty($users)) {
   $result = [
     "message" => "帳號不正確",
   ];
@@ -32,7 +30,7 @@ if (empty($users)) {
   echo json_encode($result);
 } else {
   $result = [
-    "message" => "密碼不正確",
+    "error" => "密碼不正確",
   ];
   echo json_encode($result);
 }
