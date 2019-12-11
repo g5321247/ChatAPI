@@ -1,34 +1,57 @@
 # Chat-API-Doc
-## HOST_URL
-xxxxxx
+**Host Name**
+george.darklit.tw
 
-## API Version
+**API Version**
 1.0
 
+**User Sign In API**
+- **End Point:** `/account`
+- **Method:** `POST`
+- **Request Headers:**
 
-## User Sign In API
-End Point: /user/signin
+| Field        | Type   | Description                  |
+| ------------ | ------ | ---------------------------- |
+| Content-Type | String | Only accept `application/json`|
 
-Method: POST
+- **Request Body**
 
-Request Headers:
+| Field        | Type   | Description |
+| ------------ | ------ | ----------- |
+| email        | String | Required    |
+| password     | String | Required    |
 
-Field	Type	Description
-Content-Type	String	Only accept application/json.
 
-Request Body
-Field	Type	Description
-email	String	Required if provider set to native
-password	String	Required if provider set to native
-
+- **Request Body Example**
 ```
-Request Body Example:
 {
-  "provider":"native",
   "email":"test@test.com",
   "password":"test"
 }
 ```
 
-帳號：a123456@hotmail.com
-密碼: 12345678
+- **Success Response Example**
+```
+{
+    "id": "1",
+    "name": "Prof. Uriah Mraz",
+    "picture": "https://picsum.photos/id/0/5616/3744",
+    "status_text": "不放手直到夢想到手"
+}
+```
+
+- **Error Response: 403**
+
+| Field        | Type   | Description  |
+| ------------ | ------ | ------------ |
+| error        | String | ErrorMessage |
+
+- **Error Response Example**
+```
+{
+    "id": "1",
+    "name": "Prof. Uriah Mraz",
+    "picture": "https://picsum.photos/id/0/5616/3744",
+    "status_text": "不放手直到夢想到手"
+}
+```
