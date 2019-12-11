@@ -1,9 +1,9 @@
 # Chat-API-Doc
-### **Host Name**
+### Host Name
 
 george.darklit.tw
 
-### **API Version**
+### API Version
 
 1.0
 
