@@ -12,7 +12,7 @@ george.darklit.tw
 - **Method:** `POST`
 - **Request Example:**
 
-`http://[HOST_NAME]/api/[API_VERSION]/user/signup.php`
+  `http://[HOST_NAME]/api/[API_VERSION]/user/signup.php`
 - **Request Headers:**
 
 | Field        | Type   | Description                  |
