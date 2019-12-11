@@ -1,14 +1,17 @@
 # Chat-API-Doc
 **Host Name**
+
 george.darklit.tw
 
 **API Version**
+
 1.0
 
 ## User Sign In API
 - **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Example:**
+
 `http://[HOST_NAME]/api/[API_VERSION]/user/signup.php`
 - **Request Headers:**
 
