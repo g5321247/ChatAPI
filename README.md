@@ -5,8 +5,8 @@ george.darklit.tw
 **API Version**
 1.0
 
-**User Sign In API**
-- **End Point:** `/account`
+## User Sign In API
+- **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Headers:**
 
