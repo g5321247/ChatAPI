@@ -6,7 +6,8 @@ class QueryBuilder {
 
   public function __construct(Pdo $pdo)
   {
-    $this -> pdo = $pdo;
+    $this->pdo = $pdo;
+    $this->pdo->query('SET NAMES "utf8"');
   }
 
   public function selectAll($table, $type) {
