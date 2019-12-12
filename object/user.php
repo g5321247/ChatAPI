@@ -8,6 +8,8 @@ class User {
    public $name;
    public $photo;
    public $status;
+   public $friendID;
+   public $groupID;
 }
 
 

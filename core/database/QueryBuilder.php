@@ -18,12 +18,20 @@ class QueryBuilder {
     return $result;
   }
 
-  public function queryAccount($table, String $value) : Array {
-    $statement = $this->pdo->prepare("select * from `{$table}` WHERE account = '{$value}'");
+  public function query($table, String $column, String $value) : Array {
+    $statement = $this->pdo->prepare("select * from `{$table}` WHERE `{$column}` = '{$value}'");
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_CLASS, 'User');
 
-    // $_SESSION['account'] = $value;
     return $result;
   }
+
+  public function queryProperty(String $sql, $property) : Array {
+    $statement = $this->pdo->prepare($sql);
+    $statement->execute();
+    $result = $statement->fetchAll(PDO::FETCH_CLASS, $property);
+
+    return $result;
+  }
+
 }
