@@ -7,7 +7,7 @@ george.darklit.tw
 
 1.0
 
-## User Sign In API
+## User Signup
 - **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Example:**
@@ -23,14 +23,14 @@ george.darklit.tw
 
 | Field        | Type   | Description |
 | ------------ | ------ | ----------- |
-| email        | String | Required    |
+| account      | String | Required    |
 | password     | String | Required    |
 
 
 - **Request Body Example**
 ```
 {
-  "email":"test@test.com",
+  "account":"test@test.com",
   "password":"test"
 }
 ```
