@@ -23,14 +23,14 @@ george.darklit.tw
 
 | Field        | Type   | Description |
 | ------------ | ------ | ----------- |
-| email        | String | Required    |
+| account      | String | Required    |
 | password     | String | Required    |
 
 
 - **Request Body Example**
 ```
 {
-  "email":"test@test.com",
+  "account":"test@test.com",
   "password":"test"
 }
 ```
