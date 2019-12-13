@@ -10,6 +10,21 @@ class User {
    public $status;
    public $friendID;
    public $groupID;
+
+   public function getResult() {
+     $status = isset($this->status) ? $this->status : "";
+     $photo = isset($this->photo) ? $this->photo : "";
+
+     $result = [
+       "id"=> $this->id,
+       "name"=> $this->name,
+       "picture"=> $photo,
+       "status_text"=> $status,
+     ];
+
+     return $result;
+   }
+
 }
 
 

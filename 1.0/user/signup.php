@@ -20,13 +20,8 @@ if (empty($account) || empty($password)) {
   echo json_encode($result);
 } else if ($users[0]->password == $password) {
   $user = $users[0];
-  $result = [
-    "id"=> $user->id,
-    "name"=> $user->name,
-    "picture"=> $user->photo ?? "",
-    "status_text"=> $user->status ?? "",
-  ];
 
+  $result = $user -> getResult();
   echo json_encode($result);
 } else {
   $result = [

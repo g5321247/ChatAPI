@@ -9,12 +9,17 @@ $userID = isset($_GET['userID']) ? $_GET['userID']:'';
 
 $sql = "select * from friendList WHERE userID = '{$userID}'";
 $lists =  $queryBuilder -> queryProperty($sql,'friendList');
-$friendsID = array();
 
+$sql = "select * from user WHERE id = '{$userID}'";
+$users =  $queryBuilder -> queryProperty($sql,'user');
+$mainPage = $users[0] -> getResult();
+
+
+// 朋友列表
+$friendsID = array();
 foreach ($lists as $list) {
   $friendsID[] = ($list->friendID);
 }
-
 $friendsID = implode(',',$friendsID);
 $friendSql = "select * from user WHERE id IN ({$friendsID})";
 $friends =  $queryBuilder -> queryProperty($friendSql,'user');
@@ -24,15 +29,12 @@ foreach ($friends as $user) {
   $photo = isset($user->photo) ? $user->photo : "";
   $status = isset($user->status) ? $user->status : "";
 
-  $result = [
-    "id"=> $user->id,
-    "name"=> $user->name,
-    "picture"=> $photo,
-    "status_text"=> $status,
-  ];
+  $result = $user->getResult();
 
   $friendsList[] = $result;
 }
 
-echo json_encode($friendsList);
+$mainPage['friends'] = $friendsList;
+
+echo json_encode($mainPage);
 ?>
