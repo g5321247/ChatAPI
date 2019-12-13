@@ -54,9 +54,6 @@ george.darklit.tw
 - **Error Response Example**
 ```
 {
-    "id": "1",
-    "name": "Prof. Uriah Mraz",
-    "picture": "https://picsum.photos/id/0/5616/3744",
-    "status_text": "不放手直到夢想到手"
+    "error": "密碼不正確"
 }
 ```
