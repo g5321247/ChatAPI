@@ -23,8 +23,8 @@ if (empty($account) || empty($password)) {
   $result = [
     "id"=> $user->id,
     "name"=> $user->name,
-    "picture"=> $user->photo,
-    "status_text"=> $user->status,
+    "picture"=> $user->photo ?? "",
+    "status_text"=> $user->status ?? "",
   ];
 
   echo json_encode($result);
