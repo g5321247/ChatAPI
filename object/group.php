@@ -9,7 +9,7 @@ class Group {
    public function getResult() {
      echo 'wew';
      $result = [
-       "id"=> $this->id,
+       "id"=> (int)$this->id,
        "name"=> $this->title,
        "picture"=> $this->image,
      ];
