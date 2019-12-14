@@ -3,7 +3,6 @@ include(dirname(dirname(dirname(__FILE__)))."/object/user.php");
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
 $queryBuilder = require (dirname(dirname(dirname(__FILE__)))."/bootstrap.php");
 
 $inputJSON = file_get_contents('php://input');

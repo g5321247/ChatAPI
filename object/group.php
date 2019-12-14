@@ -7,7 +7,6 @@ class Group {
    public $type;
 
    public function getResult() {
-     echo 'wew';
      $result = [
        "id"=> (int)$this->id,
        "name"=> $this->title,
