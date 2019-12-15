@@ -23,7 +23,7 @@ class Group {
      $result = $this->getResult();
 
      $result["last_message"] = $this->lastMessage;
-     $result["last_message_time"] = $this->messageTime;
+     $result["last_message_time"] = (int)$this->messageTime;
 
      return $result;
    }

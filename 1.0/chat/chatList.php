@@ -56,9 +56,24 @@ usort($groups, "cmp");
 $groupsList = array();
 
 foreach ($groups as $group) {
+  // 0 為單人
+  if ($group->type == 0) {
+    $groupSql = "select * from group_user WHERE groupID IN ({$group->id}) AND userID <> ({$userID})";
+    $list =  $queryBuilder -> queryProperty($groupSql,'groupList');
+    $friendID = $list[0]->userID;
+    $sql = "select * from user WHERE id = '{$friendID}'";
+    $users =  $queryBuilder -> queryProperty($sql,'user');
+    $group->title = $users[0]->name;
+    $group->image = $users[0]->photo;
+  }
+
   $result = $group->getChatListResult();
   $groupsList[] = $result;
 }
 
-echo json_encode($groupsList);
+echo json_encode(
+  [
+    "chat_lists" => $groupsList
+  ]
+);
 ?>
