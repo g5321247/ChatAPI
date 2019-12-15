@@ -57,6 +57,74 @@ george.darklit.tw
     "error": "密碼不正確"
 }
 ```
+
+## Chat List
+- **End Point:** `/chat/chatList`
+- **Method:** `GET`
+- **Request Example:**
+
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatList.php`
+- **Query Parameters:**
+
+| Field  | Type   | Description |
+| ------ | ------ | ----------- |
+| userID | String | Required    |
+
+- **Request Example**
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatList.php?userID=20`
+
+- **Success Response: 200**
+
+| Field       | Type   | Description |
+| ----------- | ------ | ----------- |
+| chat_lists | Array | Array of `Chat Object`    |
+
+- **Chat Object**
+  
+| Field             | Type   | Description                                |
+| -----------       | ------ | -----------                                |
+| chat_id           | Int    | Chat's id                                  |
+| name              | String | Chat's title                               | 
+| picture           | String | Chat's picture                             |
+| last_message      | String | last message in chatroom                   |
+| last_message_time | Number | Lastest sending message time in unix time. |
+
+- **Success Response Example**
+```
+Ex:
+{
+    "chat_lists": [
+        {
+            "chat_id": 5,
+            "name": "JoJo",
+            "picture": "",
+            "last_message": "兒三個式即？發前一兒。醫看腦下在小運，你目決以股屋人落了作道可；親去多票養該在。",
+            "last_message_time": 1576385584
+        },
+        {
+            "chat_id": 3,
+            "name": "大台北租屋",
+            "picture": "https://www.hcland.com.tw//upload/20180610114703ugwsu1.jpg",
+            "last_message": "又叫題，不物精記告，了林的的玩故用不然生進食識調速是便公現告古，他得畫，輪多水小縣去古；裡因廣上，子實益興其？你持草遊。可好足的到你不我為處間傷",
+            "last_message_time": 1576345584
+        }
+    ]
+}
+```
+
+- **Error Response: 403**
+
+| Field        | Type   | Description  |
+| ------------ | ------ | ------------ |
+| error        | String | ErrorMessage |
+
+- **Error Response Example**
+```
+{
+    "error": "invalid user id"
+}
+```
+
 ## Main Page
 - **End Point:** `/user/mainPage`
 - **Method:** `GET`
