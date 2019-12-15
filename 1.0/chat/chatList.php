@@ -31,13 +31,10 @@ if (empty($users[0])) {
   showErrorMessage();
 }
 
-$mainPage = $users[0] -> getResult();
+$chatList = $users[0] -> getResult();
 
 $sql = "select * from group_user WHERE userID = '{$userID}'";
 $groupList = $queryBuilder -> queryProperty($sql,'groupList');
-
-$sql = "select * from friendList WHERE userID = '{$userID}'";
-$friendList =  $queryBuilder -> queryProperty($sql,'friendList');
 
 // 群組列表
 $groupsID = array();
@@ -46,34 +43,22 @@ foreach ($groupList as $list) {
 }
 
 $groupsID = implode(',',$groupsID);
-$groupSql = "select * from groups WHERE id IN ({$groupsID} AND type = 1)";
+$groupSql = "select * from groups WHERE id IN ({$groupsID})";
 $groups =  $queryBuilder -> queryProperty($groupSql,'group');
+
+//排序規則
+function cmp($a, $b) {
+    return $a->messageTime < $b->messageTime;
+}
+
+usort($groups, "cmp");
+
 $groupsList = array();
 
 foreach ($groups as $group) {
-  $result = $group->getResult();
+  $result = $group->getChatListResult();
   $groupsList[] = $result;
 }
 
-$mainPage['chat_groups'] = $groupsList;
-
-// 朋友列表
-$friendsID = array();
-foreach ($friendList as $list) {
-  $friendsID[] = ($list->friendID);
-}
-$friendsID = implode(',',$friendsID);
-$friendSql = "select * from user WHERE id IN ({$friendsID})";
-$friends =  $queryBuilder -> queryProperty($friendSql,'user');
-
-$friendsList = array();
-
-foreach ($friends as $user) {
-  $result = $user->getResult();
-  $friendsList[] = $result;
-}
-
-$mainPage['friends'] = $friendsList;
-
-echo json_encode($mainPage);
+echo json_encode($groupsList);
 ?>
