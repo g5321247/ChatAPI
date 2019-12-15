@@ -77,7 +77,7 @@ george.darklit.tw
 
 | Field       | Type   | Description |
 | ----------- | ------ | ----------- |
-| chat_lists | Array | Array of `Chat Object`    |
+| data | Array | Array of `Chat Object`    |
 
 - **Chat Object**
   
@@ -93,7 +93,7 @@ george.darklit.tw
 ```
 Ex:
 {
-    "chat_lists": [
+    "data": [
         {
             "chat_id": 5,
             "name": "JoJo",
