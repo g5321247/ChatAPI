@@ -9,10 +9,11 @@ class Group {
    public $messageTime;
 
    public function getResult() {
+     $image = isset($this->image) ? $this->image : "";
      $result = [
-       "id"=> (int)$this->id,
+       "chat_id"=> (int)$this->id,
        "name"=> $this->title,
-       "picture"=> $this->image,
+       "picture"=> $image,
      ];
 
      return $result;
@@ -21,10 +22,8 @@ class Group {
    public function getChatListResult() {
      $result = $this->getResult();
 
-     $result[] = [
-       "last_message"=> $this->lastMessage,
-       "last_message_time"=> $this->messageTime,
-     ];
+     $result["last_message"] = $this->lastMessage;
+     $result["last_message_time"] = $this->messageTime;
 
      return $result;
    }
