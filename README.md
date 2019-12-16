@@ -183,8 +183,7 @@ Ex:
         "picture": "https://lorempixel.com/640/480/?94588",
         "status_text": "勇猛精進"
     }
-  ]
-  },
+  ],
     "friends": [
     {
         "id": 1239890,
