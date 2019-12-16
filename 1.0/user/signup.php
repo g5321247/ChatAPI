@@ -1,5 +1,6 @@
 <?php
 include(dirname(dirname(dirname(__FILE__)))."/object/user.php");
+include(dirname(dirname(dirname(__FILE__)))."/object/error.php");
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -10,29 +11,21 @@ $input = json_decode($inputJSON, TRUE); //convert JSON into array
 
 $account = isset($input['account']) ? $input['account']:'';
 $password = isset($input['password']) ? md5($input['password']):'';
-$users =  $queryBuilder -> query('user', 'account', $account);
 
 if (empty($account) || empty($password)) {
-  $result = ["error"=>"帳號和密碼不得空白"];
-  http_response_code(403);
-  echo json_encode($result);
-}else if (empty($users)) {
-  $result = [
-    "message" => "帳號不正確",
-  ];
-  http_response_code(403);
-  echo json_encode($result);
-} else if ($users[0]->password == $password) {
-  $user = $users[0];
-
-  $result = $user -> getResult();
-  echo json_encode($result);
-} else {
-  $result = [
-    "error" => "密碼不正確",
-  ];
-  http_response_code(403);
-  echo json_encode($result);
+  ErrorMessage::getMessage("帳號和密碼不得空白");
+  exit;
 }
+
+$sql = "select * from user WHERE account = '{$account}' and password = '{$password}' ";
+$user =  $queryBuilder -> querySingleObject($sql,'user');
+
+if(empty($user)) {
+  ErrorMessage::getMessage("帳號或密碼不正確");
+  exit;
+}
+
+$result = $user->getResult();
+echo json_encode($result);
 
 ?>

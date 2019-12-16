@@ -37,10 +37,7 @@ class QueryBuilder {
   public function querySingleObject(String $sql, $property) {
     $statement = $this->pdo->prepare($sql);
     $statement->execute();
-    // $result = $statement->fetch(PDO::FETCH_CLASS, $property);
     $result = $statement->fetchObject($property);
-
-
     return $result;
   }
 
