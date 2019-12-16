@@ -7,6 +7,9 @@ george.darklit.tw
 
 1.0
 
+## API List
+[Signup](#UserSignup)  
+
 ## User Signup
 - **End Point:** `/user/signup`
 - **Method:** `POST`
@@ -205,5 +208,76 @@ Ex:
 ```
 {
     "error": "invalid user id"
+}
+```
+
+## Chat Room
+- **End Point:** `/chat/chatroom`
+- **Method:** `GET`
+- **Request Example:**
+
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php`
+- **Query Parameters:**
+
+| Field   | Type   | Description |
+| ------  | ------ | ----------- |
+| groupID | Int    | Required    |
+
+- **Request Example**
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatList.php?userID=20`
+
+- **Success Response: 200**
+
+| Field       | Type   | Description |
+| ----------- | ------ | ----------- |
+| data | Array | Array of `Message Object`    |
+
+- **Message Object**
+  
+| Field             | Type           | Description                                |
+| -----------       | ------         | -----------                                |
+| sender            | `User Object`  | Message sender info                        |
+| content           | String         | last message in chatroom                   |
+| sending_time      | Number         | Lastest sending message time in unix time. |
+
+- **Success Response Example**
+```
+Ex:
+{
+    "data": [
+        {
+            "sender": {
+                "id": 1239890,
+                "name": "Michael",
+                "picture": "https://lorempixel.com/640/480/?94588",
+                "status_text": "勇猛精進"
+            },
+            "content": "66666",
+            "sending_time": 1576345584
+        },
+        {
+            "sender": {
+                "id": 6626251,
+                "name": "Peter",
+                "picture": "https://lorempixel.com/640/480/?94588",
+                "status_text": "我不爽"
+            },
+            "content": "你在說啥",
+            "sending_time": 1576345573
+        }
+    ]
+}
+```
+
+- **Error Response: 403**
+
+| Field        | Type   | Description  |
+| ------------ | ------ | ------------ |
+| error        | String | ErrorMessage |
+
+- **Error Response Example**
+```
+{
+    "error": "對話不存在"
 }
 ```
