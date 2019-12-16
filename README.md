@@ -8,9 +8,9 @@ george.darklit.tw
 1.0
 
 ## API List
-[Signup](#User Signup)  
+[Signup](#UserSignup)  
 
-## User Signup
+## UserSignup
 - **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Example:**
