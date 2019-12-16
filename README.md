@@ -176,22 +176,23 @@ Ex:
     "picture": "https://lorempixel.com/640/480/?94588",
     "status_text": "勇猛精進"
   },
-  "chat_groups": {
-    [
+  "chat_groups": [
+    {
         "id": 1239890,
         "name": "跑跑跳",
         "picture": "https://lorempixel.com/640/480/?94588",
         "status_text": "勇猛精進"
-    ]
+    }
+  ]
   },
-    "friends": {
-    [
+    "friends": [
+    {
         "id": 1239890,
         "name": "Kai",
         "picture": "https://lorempixel.com/640/480/?94588",
         "status_text": "我好窮"
-    ]
-  }
+    }
+  ]
 }
 ```
 
