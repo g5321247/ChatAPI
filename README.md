@@ -68,7 +68,7 @@ george.darklit.tw
 
 | Field  | Type   | Description |
 | ------ | ------ | ----------- |
-| userID | String | Required    |
+| userID | Int    | Required    |
 
 - **Request Example**
  `http://[HOST_NAME]/api/[API_VERSION]/chat/chatList.php?userID=20`
@@ -135,7 +135,7 @@ Ex:
 
 | Field  | Type   | Description |
 | ------ | ------ | ----------- |
-| userID | String | Required    |
+| userID | Int    | Required    |
 
 - **Request Example**
  `http://[HOST_NAME]/api/[API_VERSION]/user/mainPage.php?userID=20`
