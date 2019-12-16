@@ -8,7 +8,10 @@ george.darklit.tw
 1.0
 
 ## API List
-[Signup](#UserSignup)  
+[登入](#UserSignup)  
+[聊天列表](#ChatList)  
+[主頁](#MainPage)  
+[聊天室](#ChatRoom)  
 
 ## UserSignup
 - **End Point:** `/user/signup`
@@ -61,7 +64,7 @@ george.darklit.tw
 }
 ```
 
-## Chat List
+## ChatList
 - **End Point:** `/chat/chatList`
 - **Method:** `GET`
 - **Request Example:**
@@ -128,7 +131,7 @@ Ex:
 }
 ```
 
-## Main Page
+## MainPage
 - **End Point:** `/user/mainPage`
 - **Method:** `GET`
 - **Request Example:**
@@ -211,7 +214,7 @@ Ex:
 }
 ```
 
-## Chat Room
+## ChatRoom
 - **End Point:** `/chat/chatroom`
 - **Method:** `GET`
 - **Request Example:**
