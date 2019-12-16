@@ -50,30 +50,36 @@ class ChatList {
 
   protected function getUser() {
     $sql = "select * from user WHERE id = '{$this->userID}'";
-    $users =  $this->queryBuilder -> queryProperty($sql,'user');
-    return $users[0];
+    $users =  $this->queryBuilder -> querySingleObject($sql,'user');
+    return $users;
   }
 
-  function getGroupsList() {
+  protected function getGroupsList() {
     $groups = $this->getGroups();
     $groupsList = array();
 
     foreach ($groups as $group) {
-      // 0 為單人
-      if ($group->type == 0) {
-        $groupSql = "select * from group_user WHERE groupID IN ({$group->id}) AND userID <> ({$this->userID})";
-        $list =  $this->queryBuilder -> queryProperty($groupSql,'groupList');
-        $friendID = $list[0]->userID;
-        $sql = "select * from user WHERE id = '{$friendID}'";
-        $users =  $this->queryBuilder -> queryProperty($sql,'user');
-        $group->title = $users[0]->name;
-        $group->image = $users[0]->photo;
-      }
-
+      $group = $this-> handleGroupsType($group);
       $result = $group->getChatListResult();
       $groupsList[] = $result;
     }
     return $groupsList;
+  }
+
+  function handleGroupsType($group) {
+    // 0 為單人 1為多人
+    // 單人的照片和名稱改用對方的照片和名稱
+    if ($group->type == 0) {
+      $groupSql = "select userID from group_user WHERE groupID IN ({$group->id}) AND userID <> ({$this->userID})";
+      $list =  $this->queryBuilder -> querySingle($groupSql);
+      $friendID = $list['userID'];
+      $sql = "select * from user WHERE id = '{$friendID}'";
+      $user =  $this->queryBuilder -> querySingleObject($sql,'user');
+      $group->title = $user->name;
+      $group->image = $user->photo;
+    }
+
+    return $group;
   }
 
   protected function getGroups() {
@@ -92,4 +98,5 @@ class ChatList {
     return $groups;
   }
 }
+
 ?>
