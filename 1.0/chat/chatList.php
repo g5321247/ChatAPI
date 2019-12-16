@@ -1,34 +1,38 @@
 <?php
-include(dirname(dirname(dirname(__FILE__)))."/object/user.php");
-include(dirname(dirname(dirname(__FILE__)))."/object/friendList.php");
-include(dirname(dirname(dirname(__FILE__)))."/object/groupList.php");
-include(dirname(dirname(dirname(__FILE__)))."/object/group.php");
+DEFINE('PATH',dirname(dirname(dirname(__FILE__)))."/object");
+include(PATH."/user.php");
+include(PATH."/friendList.php");
+include(PATH."/groupList.php");
+include(PATH."/group.php");
+include(PATH."/error.php");
 
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
+global $queryBuilder;
 $queryBuilder = require (dirname(dirname(dirname(__FILE__)))."/bootstrap.php");
-
-function showErrorMessage() {
-  http_response_code(403);
-  $result = [
-      "message" => "invalid user id",
-  ];
-  echo json_encode($result);
-  exit;
-}
 
 $userID = isset($_GET['userID']) ? $_GET['userID']:'';
 
 if (empty($userID)) {
-  showErrorMessage();
+  ErrorMessage::getMessage("invalid user id");
+  exit;
 }
+
+function getUser($id) {
+  $sql = "select * from user WHERE id = '{$userID}'";
+  $users =  $queryBuilder -> queryProperty($sql,'user');
+  return $users[0];
+}
+
 
 $sql = "select * from user WHERE id = '{$userID}'";
 $users =  $queryBuilder -> queryProperty($sql,'user');
 
 if (empty($users[0])) {
-  showErrorMessage();
+  ErrorMessage::getMessage("invalid user id");
+
+  exit;
 }
 
 $chatList = $users[0] -> getResult();

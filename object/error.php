@@ -1,13 +1,15 @@
 <?php
 
-class Error {
+class ErrorMessage {
 
   public static function getMessage($message) {
     $result = [
       "message" => $message,
     ];
-    return $result;
+
+    echo json_encode($result);
   }
+
 }
 
 ?>
