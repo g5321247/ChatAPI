@@ -8,7 +8,7 @@ george.darklit.tw
 1.0
 
 ## API List
-[Signup](#UserSignup)  
+[Signup](#User Signup)  
 
 ## User Signup
 - **End Point:** `/user/signup`
