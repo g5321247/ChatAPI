@@ -271,16 +271,3 @@ Ex:
     ]
 }
 ```
-
-- **Error Response: 403**
-
-| Field        | Type   | Description  |
-| ------------ | ------ | ------------ |
-| error        | String | ErrorMessage |
-
-- **Error Response Example**
-```
-{
-    "error": "對話不存在"
-}
-```
