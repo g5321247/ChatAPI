@@ -7,7 +7,13 @@ george.darklit.tw
 
 1.0
 
-## User Signup
+## API List
+[登入](#UserSignup)  
+[聊天列表](#ChatList)  
+[主頁](#MainPage)  
+[聊天室](#ChatRoom)  
+
+## UserSignup
 - **End Point:** `/user/signup`
 - **Method:** `POST`
 - **Request Example:**
@@ -58,7 +64,7 @@ george.darklit.tw
 }
 ```
 
-## Chat List
+## ChatList
 - **End Point:** `/chat/chatList`
 - **Method:** `GET`
 - **Request Example:**
@@ -68,7 +74,7 @@ george.darklit.tw
 
 | Field  | Type   | Description |
 | ------ | ------ | ----------- |
-| userID | String | Required    |
+| userID | Int    | Required    |
 
 - **Request Example**
  `http://[HOST_NAME]/api/[API_VERSION]/chat/chatList.php?userID=20`
@@ -125,7 +131,7 @@ Ex:
 }
 ```
 
-## Main Page
+## MainPage
 - **End Point:** `/user/mainPage`
 - **Method:** `GET`
 - **Request Example:**
@@ -135,7 +141,7 @@ Ex:
 
 | Field  | Type   | Description |
 | ------ | ------ | ----------- |
-| userID | String | Required    |
+| userID | Int    | Required    |
 
 - **Request Example**
  `http://[HOST_NAME]/api/[API_VERSION]/user/mainPage.php?userID=20`
@@ -176,22 +182,22 @@ Ex:
     "picture": "https://lorempixel.com/640/480/?94588",
     "status_text": "勇猛精進"
   },
-  "chat_groups": {
-    [
+  "chat_groups": [
+    {
         "id": 1239890,
         "name": "跑跑跳",
         "picture": "https://lorempixel.com/640/480/?94588",
         "status_text": "勇猛精進"
-    ]
-  },
-    "friends": {
-    [
+    }
+  ],
+    "friends": [
+    {
         "id": 1239890,
         "name": "Kai",
         "picture": "https://lorempixel.com/640/480/?94588",
         "status_text": "我好窮"
-    ]
-  }
+    }
+  ]
 }
 ```
 
@@ -205,5 +211,76 @@ Ex:
 ```
 {
     "error": "invalid user id"
+}
+```
+
+## ChatRoom
+- **End Point:** `/chat/chatroom`
+- **Method:** `GET`
+- **Request Example:**
+
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php`
+- **Query Parameters:**
+
+| Field   | Type   | Description |
+| ------  | ------ | ----------- |
+| groupID | Int    | Required    |
+
+- **Request Example**
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php?groupID=20`
+
+- **Success Response: 200**
+
+| Field       | Type   | Description |
+| ----------- | ------ | ----------- |
+| data | Array | Array of `Message Object`    |
+
+- **Message Object**
+  
+| Field             | Type           | Description                                |
+| -----------       | ------         | -----------                                |
+| sender            | `User Object`  | Message sender info                        |
+| content           | String         | last message in chatroom                   |
+| sending_time      | Number         | Lastest sending message time in unix time. |
+
+- **Success Response Example**
+```
+Ex:
+{
+    "data": [
+        {
+            "sender": {
+                "id": 1239890,
+                "name": "Michael",
+                "picture": "https://lorempixel.com/640/480/?94588",
+                "status_text": "勇猛精進"
+            },
+            "content": "66666",
+            "sending_time": 1576345584
+        },
+        {
+            "sender": {
+                "id": 6626251,
+                "name": "Peter",
+                "picture": "https://lorempixel.com/640/480/?94588",
+                "status_text": "我不爽"
+            },
+            "content": "你在說啥",
+            "sending_time": 1576345573
+        }
+    ]
+}
+```
+
+- **Error Response: 403**
+
+| Field        | Type   | Description  |
+| ------------ | ------ | ------------ |
+| error        | String | ErrorMessage |
+
+- **Error Response Example**
+```
+{
+    "error": "對話不存在"
 }
 ```
