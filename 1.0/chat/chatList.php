@@ -9,7 +9,6 @@ include(PATH."/error.php");
 header("Access-Control-Allow-Origin: *");
 header("Content-Type: application/json; charset=UTF-8");
 
-
 $queryBuilder = require (dirname(dirname(dirname(__FILE__)))."/bootstrap.php");
 $userID = isset($_GET['userID']) ? $_GET['userID']:'';
 
