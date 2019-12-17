@@ -12,9 +12,9 @@ class QueryBuilder {
 
   public function create($sql) {
     $statement = $this->pdo->prepare($sql);
-    $statement->execute();
+    // $statement->execute();
 
-    return $statement;
+    return $statement->execute();
   }
 
   public function selectAll($table, $type) {
