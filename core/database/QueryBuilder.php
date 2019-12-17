@@ -10,6 +10,13 @@ class QueryBuilder {
     $this->pdo->query('SET NAMES "utf8"');
   }
 
+  public function create($sql) {
+    $statement = $this->pdo->prepare($sql);
+    $statement->execute();
+
+    return $statement;
+  }
+
   public function selectAll($table, $type) {
     $statement = $this->pdo->prepare("select * from {$table}");
     $statement->execute();
