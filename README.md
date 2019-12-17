@@ -227,7 +227,7 @@ Ex:
 | groupID | Int    | Required    |
 
 - **Request Example**
- `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php?userID=20`
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php?groupID=20`
 
 - **Success Response: 200**
 
