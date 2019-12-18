@@ -53,6 +53,10 @@ switch ($status) {
       "message" => $resultMessage
     ];
     echo json_encode($result);
+
+    $sql = "UPDATE groups SET lastMessage = '{$newContent}', messageTime = '{$currentTime}' WHERE id = {$groupID}";
+    $chatroom->createNewMessage($sql);
+
     break;
 }
 
