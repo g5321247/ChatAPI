@@ -271,3 +271,66 @@ Ex:
     ]
 }
 ```
+
+- **End Point:** `/chat/chatroom`
+- **Method:** `POST`
+- **Request Example:**
+
+ `http://[HOST_NAME]/api/[API_VERSION]/chat/chatroom.php`
+ - **Request Headers:**
+
+| Field        | Type   | Description                  |
+| ------------ | ------ | ---------------------------- |
+| Content-Type | String | Only accept `application/json`|
+
+- **Request Body**
+
+| Field   | Type   | Description |
+| ------  | ------ | ----------- |
+| groupID | Int    | Required    |
+| userID  | Int    | Required    |
+| message | String | Required    |
+
+- **Request Body Example**
+```
+{
+  "userID":"1",
+  "groupID": 1,
+  "message":"Yesss"
+}
+```
+
+- **Success Response: 200**
+
+| Field       | Type   | Description |
+| ----------- | ------ | ----------- |
+| message     | String | Successful Message |
+
+- **Message Object**
+  
+| Field             | Type           | Description                                |
+| -----------       | ------         | -----------                                |
+| sender            | `User Object`  | Message sender info                        |
+| content           | String         | last message in chatroom                   |
+| sending_time      | Number         | Lastest sending message time in unix time. |
+
+- **Success Response Example**
+```
+Ex:
+{
+    "message": "傳送成功"
+}
+```
+
+- **Error Response: 403**
+
+| Field        | Type   | Description  |
+| ------------ | ------ | ------------ |
+| error        | String | ErrorMessage |
+
+- **Error Response Example**
+```
+{
+    "error": "invalid parameter"
+}
+```
