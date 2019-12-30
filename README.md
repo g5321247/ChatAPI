@@ -12,6 +12,7 @@ george.darklit.tw
 [聊天列表](#ChatList)  
 [主頁](#MainPage)  
 [聊天室](#ChatRoom)  
+[傳送訊息](#SendingMessage)  
 
 ## UserSignup
 - **End Point:** `/user/signup`
@@ -272,6 +273,7 @@ Ex:
 }
 ```
 
+## SendingMessage
 - **End Point:** `/chat/chatroom`
 - **Method:** `POST`
 - **Request Example:**
