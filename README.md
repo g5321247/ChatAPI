@@ -308,14 +308,6 @@ Ex:
 | ----------- | ------ | ----------- |
 | message     | String | Successful Message |
 
-- **Message Object**
-  
-| Field             | Type           | Description                                |
-| -----------       | ------         | -----------                                |
-| sender            | `User Object`  | Message sender info                        |
-| content           | String         | last message in chatroom                   |
-| sending_time      | Number         | Lastest sending message time in unix time. |
-
 - **Success Response Example**
 ```
 Ex:
