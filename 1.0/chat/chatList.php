@@ -1,7 +1,6 @@
 <?php
 DEFINE('PATH',dirname(dirname(dirname(__FILE__)))."/object");
 include(PATH."/user.php");
-include(PATH."/friendList.php");
 include(PATH."/groupList.php");
 include(PATH."/group.php");
 include(PATH."/error.php");
@@ -42,7 +41,7 @@ class ChatList {
 
     echo json_encode(
       [
-        "chat_lists" => $groups
+        "data" => $groups
       ]
     );
   }

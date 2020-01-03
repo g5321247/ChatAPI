@@ -41,6 +41,9 @@ switch ($status) {
     $chatroom -> getMessages();
     break;
   case 'POST':
+    //TODO: 要判斷這個使用者是不是這個 group 的人
+    //  $sql = "SELECT * FROM group_user WHERE userID = '{$sendrID}'"
+
     // 放在這是避免 get 的 groupID 被蓋掉
     $groupID = isset($input['groupID']) ? $input['groupID']:'';
     $currentTime = time();
@@ -91,7 +94,7 @@ class Chatroom {
       $messagesJSON[] = $result;
     }
 
-    echo json_encode($messagesJSON);
+    echo json_encode(["data" => $messagesJSON]);
   }
 
   protected function retrieveUser($userID) {

@@ -1,0 +1,15 @@
+{
+	"require": {
+		"phpmailer/phpmailer": "~5.2.7"
+	},
+  "autoload": {
+   "psr-4": {
+    "router\\": "src/router",
+    "database\\": "src/database",
+    "controller\\": "src/controller",
+    "entity\\": "src/entity",
+    "model\\": "src/model",
+    "object\\": "object"
+   }
+  }
+}
