@@ -1,6 +1,6 @@
 <?php
 
-class Group {
+class Group  {
    public $id;
    public $title;
    public $image;

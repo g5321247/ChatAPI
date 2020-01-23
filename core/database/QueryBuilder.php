@@ -33,7 +33,7 @@ class QueryBuilder {
     return $result;
   }
 
-  public function queryProperty(String $sql, $property) : Array {
+  public function queryProperty(String $sql, $property) {
     $statement = $this->pdo->prepare($sql);
     $statement->execute();
     $result = $statement->fetchAll(PDO::FETCH_CLASS, $property);

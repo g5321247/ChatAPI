@@ -3,11 +3,12 @@ namespace router;
 
 class Router {
 
-  function yo() {
-    echo "yoyo";
+  function getRequest(String $action, $data) {
+      switch ($action) {
+        case 'getMessage':
+          break;
+      }
   }
-
-
 }
 
 ?>

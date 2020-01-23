@@ -1,7 +1,7 @@
 <?php
-require '../../vendor/autoload.php';
 include(dirname(dirname(dirname(__FILE__)))."/object/user.php");
 include(dirname(dirname(dirname(__FILE__)))."/object/groupList.php");
+include(dirname(dirname(dirname(__FILE__)))."/object/friendList.php");
 include(dirname(dirname(dirname(__FILE__)))."/object/group.php");
 
 header("Access-Control-Allow-Origin: *");
@@ -27,6 +27,7 @@ if (empty($userID)) {
 $sql = "select * from user WHERE id = '{$userID}'";
 $users =  $queryBuilder -> queryProperty($sql,'user');
 
+
 if (empty($users[0])) {
   showErrorMessage();
 }
@@ -37,7 +38,7 @@ $sql = "select * from group_user WHERE userID = '{$userID}'";
 $groupList = $queryBuilder -> queryProperty($sql,'groupList');
 
 $sql = "select * from friendList WHERE userID = '{$userID}'";
-$friendList =  $queryBuilder -> queryProperty($sql,'\entity\friendList');
+$friendList =  $queryBuilder -> queryProperty($sql,'friendList');
 
 // 群組列表
 $groupsID = array();

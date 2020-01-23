@@ -13,8 +13,9 @@ class MessageController {
 
     $messages = $messageModel->retrieveMessages($groupID);
     $messagesJSON = array();
-
+    // model 間建立 relationship
     foreach ($messages as $message) {
+
       $user = $userModel->retrieveUser($message->senderID);
       $sender = $userModel->getResult($user);
 

@@ -1,8 +1,6 @@
 <?php
 namespace model;
 
-use \entity\messageEntity;
-
 class MessageModel {
 
   protected $queryBuilder;
@@ -12,6 +10,7 @@ class MessageModel {
   }
 
   public function retrieveMessages($groupID) {
+    // 使用 sql join
     $sql = "select * from messages WHERE groupID = '{$groupID}'";
     $messages = $this->queryBuilder -> queryProperty($sql, '\entity\messageEntity');
     return $messages;

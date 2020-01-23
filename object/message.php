@@ -7,7 +7,7 @@ class Message {
   public $senderID;
   public $message;
   public $messageTime;
-  
+
 }
 
 ?>
