@@ -1,8 +1,6 @@
 # Chat-API-Doc
 ### Host Name
 
-george.darklit.tw
-
 ### API Version
 
 1.0
